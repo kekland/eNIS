@@ -43,7 +43,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            app:passwordToggleDrawable="@drawable/selector_password_visibility"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="#ffffff"
 
@@ -66,14 +65,12 @@
                 android:theme="@style/LoginEditText" />
         </android.support.design.widget.TextInputLayout>
 
-        <com.satsuware.usefulviews.LabelledSpinner
+        <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/SchoolRegisterSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/schoolsList"
             android:theme="@style/RegisterSpinner"
-            ls:labelText="@string/School"
-            ls:widgetColor="#FFFFFF"
             app:backgroundTint="#ffffff" />
 
 
@@ -90,7 +87,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="@color/material_green"
+            app:backgroundTint="@color/colorPrimary"
             android:textColor="#ffffff"
             android:text="@string/Login"/>
         <Button

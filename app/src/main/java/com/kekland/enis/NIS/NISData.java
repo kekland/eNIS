@@ -200,6 +200,9 @@ public class NISData {
 
     public static void setChildren(NISChild[] children) {
         Children = children;
+        if(Children.length == 1) {
+            setSelectedChild(Children[0]);
+        }
     }
 
     public static NISChild getSelectedChild() {
