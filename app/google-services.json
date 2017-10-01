@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "651082134202",
+    "firebase_url": "https://enis-a9b49.firebaseio.com",
+    "project_id": "enis-a9b49",
+    "storage_bucket": "enis-a9b49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651082134202:android:aa1c68bbd431c354",
+        "android_client_info": {
+          "package_name": "com.kekland.enis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651082134202-6049ivieufq3ejcirjhquvgq1h4ekg3c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kekland.enis",
+            "certificate_hash": "6edaab224f995f4d1f898182a41ad9cc2c386a13"
+          }
+        },
+        {
+          "client_id": "651082134202-fhvehe32o0gfiv1hn2p00tfmsgiqsp8m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kekland.enis",
+            "certificate_hash": "c80c1eb26c5838bd596cb61d2fc55aa3e70d8058"
+          }
+        },
+        {
+          "client_id": "651082134202-4a9nc4estvsbp1ne03dat5gtrk87i9g2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfaBQMSU_h_OqChBnaMfQ6-K6NbCcDWkw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651082134202-4a9nc4estvsbp1ne03dat5gtrk87i9g2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">eNIS</string>
+
+    <string-array name="schoolsList">
+        <item>Aktau CBD</item>
+        <item>Aktobe PhMD</item>
+        <item>Almaty PhMD</item>
+        <item>Almaty CBD</item>
+        <item>Astana PhMD</item>
+        <item>Atyrau CBD</item>
+        <item>Karaganda CBD</item>
+        <item>Kokshetau PhMD</item>
+        <item>Kostanay PhMD</item>
+        <item>Kyzylorda CBD</item>
+        <item>Pavlodar CBD</item>
+        <item>Petropavlovsk CBD</item>
+        <item>Semey PhMD</item>
+        <item>Taldykorgan PhMD</item>
+        <item>Taraz PhMD</item>
+        <item>Uralsk PhMD</item>
+        <item>Ust-Kamenogorsk CBD</item>
+        <item>Shymkent PhMD</item>
+        <item>Shymkent CBD</item>
+    </string-array>
+
+    <string name="PIN">PIN</string>
+    <string name="Password">Password</string>
+    <string name="School">School</string>
+    <string name="RememberMe">Remember me</string>
+    <string name="Login">Log in</string>
+    <string name="OfflineMode">Offline mode</string>
+</resources>
