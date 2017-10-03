@@ -71,6 +71,9 @@ dependencies {
     //Material
     compile 'com.github.arimorty:floatingsearchview:2.1.1'
     compile 'com.robertlevonyan.view:MaterialChipView:1.0.1'
+    compile 'com.orhanobut:dialogplus:1.11@aar'
+    compile 'com.github.jd-alexander:LikeButton:0.2.3'
+
 
     //Image engine
     compile 'com.facebook.fresco:fresco:1.5.0'

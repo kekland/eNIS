@@ -107,7 +107,7 @@ public class NISApiAccount {
         params.put("role", Role.toString());
         params.put("password", Password);
 
-        Requester.Request(client, School + "Account/LoginWithRole", params, false, new Requester.JSONObjectListener() {
+        Requester.Request(client, School + "/Account/LoginWithRole", params, false, new Requester.JSONObjectListener() {
             @Override
             public void onSuccess(JSONObject response) {
                 listener.onSuccess();

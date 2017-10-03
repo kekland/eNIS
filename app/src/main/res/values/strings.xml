@@ -23,10 +23,41 @@
         <item>Shymkent CBD</item>
     </string-array>
 
+    <string name="menuGrades">Grades</string>
+    <string name="menuSchedule">Schedule</string>
+    <string name="menuCalculator">Calculator</string>
+    <string name="menuGroups">Groups (In development)</string>
+    <string name="menuTimetable">Report card (In development)</string>
+    <string name="menuStatistics">Statistics (In development)</string>
+    <string name="menuSettings">Settings</string>
+    <string name="menuAuthor">Information</string>
+
+    <string name="drawerOpen">Drawer is opened</string>
+    <string name="drawerClosed">Drawer is closed</string>
+
     <string name="PIN">PIN</string>
     <string name="Password">Password</string>
     <string name="School">School</string>
     <string name="RememberMe">Remember me</string>
     <string name="Login">Log in</string>
     <string name="OfflineMode">Offline mode</string>
+    <string name="Cancel">Cancel</string>
+    <string name="LoggingIn">Logging in</string>
+
+    <string name="PasswordTooWeak">Password is too weak</string>
+    <string name="IncorrectPINOrPassword">Incorrect PIN or Password</string>
+    <string name="PINLengthError">PIN should be exactly 12 characters long</string>
+    <string name="PINCharactersError">PIN should contain only numbers</string>
+
+    <string name="IMKODiary">IMKO Diary</string>
+    <string name="JKODiary">JKO Diary</string>
+    <string name="SelectDiary">Select diary</string>
+
+    <string name="Submit">Submit</string>
+    <string name="NicknameLengthError">Nickname should have more than 4 characters</string>
+
+    <string name="quarter1">1 quarter</string>
+    <string name="quarter2">2 quarter</string>
+    <string name="quarter3">3 quarter</string>
+    <string name="quarter4">4 quarter</string>
 </resources>

@@ -7,6 +7,7 @@ import com.kekland.enis.NIS.Requests.NISApiMisc;
 import com.kekland.enis.NIS.Requests.NISApiSubjects;
 import com.kekland.enis.NIS.Subject.IMKOLesson;
 import com.kekland.enis.NIS.Subject.JKOLesson;
+import com.kekland.enis.Utilities.DebugLog;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.PersistentCookieStore;
 
@@ -40,10 +41,12 @@ public class NISApi {
             @Override
             public void onStart() {
                 listener.onStart();
+                DebugLog.i("Login starting");
             }
 
             @Override
             public void onSuccess() {
+                DebugLog.i("Login succeeded");
                 NISData.setPIN(PIN);
                 NISData.setPassword(Pass);
                 NISData.setSchool(School);
@@ -51,6 +54,7 @@ public class NISApi {
                 NISApiAccount.GetRoles(School, client, new NISApiAccount.GetRolesListener() {
                     @Override
                     public void onSuccess(final NISRole selectedRole) {
+                        DebugLog.i("GetRoles succeeded");
                         NISData.setRole(selectedRole);
 
                         NISApiAccount.LoginWithRole(PIN, Pass, School, client, selectedRole, new NISApiAccount.LoginWithRoleListener() {

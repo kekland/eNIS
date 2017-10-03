@@ -65,6 +65,11 @@ public class Requester {
             }
 
             @Override
+            public void onFailure(int code, Header[] headers, Throwable throwable, JSONObject response) {
+                listener.onFailure(throwable.getMessage());
+            }
+
+            @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 listener.onFailure(responseString);
             }

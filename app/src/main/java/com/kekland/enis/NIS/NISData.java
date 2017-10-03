@@ -28,15 +28,22 @@ public class NISData {
     private static NISChild[] Children;
     private static NISChild SelectedChild;
 
+    private static NISDiary Diary;
+
     public static void Load(Context context) throws NullPointerException {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         setPIN(prefs.getString("PIN", ""));
         setPassword(prefs.getString("Password", ""));
         setSchool(prefs.getString("School", ""));
         setNickname(prefs.getString("Nickname", ""));
-
         try {
-            setRole(NISRole.valueOf(prefs.getString("Role", "")));
+            setDiary(NISDiary.valueOf(prefs.getString("Diary", "IMKO")));
+        }
+        catch(Exception e) {
+            throw new NullPointerException("Diary is incorrect");
+        }
+        try {
+            setRole(NISRole.valueOf(prefs.getString("Role", "Student")));
         }
         catch(Exception e) {
             throw new NullPointerException("Role is incorrect");
@@ -75,6 +82,7 @@ public class NISData {
         prefs.putString("Password", getPassword());
         prefs.putString("School", getSchool());
         prefs.putString("Nickname", getNickname());
+        prefs.putString("Diary", Diary.toString());
 
         prefs.putString("Role", getRole().toString());
 
@@ -110,6 +118,7 @@ public class NISData {
         DatabaseValues.put("School", getSchool());
         DatabaseValues.put("Nickname", getNickname());
         DatabaseValues.put("Role", getRole().toString());
+        DatabaseValues.put("Diary", getDiary().toString());
 
         database.getReference().child("users-v2")
                 .child(NISApiUtils.ConvertURLToDatabaseURI(getSchool()))
@@ -121,6 +130,7 @@ public class NISData {
                                        final DatabaseListener listener) {
         listener.onStart();
         database.getReference()
+                .child("users-v2")
                 .child(NISApiUtils.ConvertURLToDatabaseURI(getSchool()))
                 .child(PIN)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -131,6 +141,7 @@ public class NISData {
                         setSchool(dataSnapshot.child("School").getValue().toString());
                         setNickname(dataSnapshot.child("Nickname").getValue().toString());
                         setRole(NISRole.valueOf(dataSnapshot.child("Role").getValue().toString()));
+                        setDiary(NISDiary.valueOf(dataSnapshot.child("Diary").getValue().toString()));
 
                         listener.onSuccess();
                     }
@@ -212,4 +223,13 @@ public class NISData {
     public static void setSelectedChild(NISChild selectedChild) {
         SelectedChild = selectedChild;
     }
+
+    public static NISDiary getDiary() {
+        return Diary;
+    }
+
+    public static void setDiary(NISDiary diary) {
+        Diary = diary;
+    }
+
 }

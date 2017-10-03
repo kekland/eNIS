@@ -20,7 +20,8 @@ public class JKOLesson {
     public String SOpID = "";
 
 
-    public String Percent = "";
+    public Integer Percent = 0;
+    public String PercentString = "0%";
     public String Mark = "";
 
     public Integer Period;
@@ -32,13 +33,15 @@ public class JKOLesson {
             Id = lesson.getString("Id");
             JournalId = lesson.getString("JournalId");
             Mark = lesson.getString("Mark");
-            Percent = lesson.getString("Score") + "%";
+            Percent = (int)Math.round(Double.parseDouble(lesson.getString("Score")));
 
             JSONArray Evaluations = lesson.getJSONArray("Evalutions");
             if (Evaluations.length() != 0) {
                 SArID = (Evaluations.getJSONObject(0)).getString("Id");
                 SOpID = (Evaluations.getJSONObject(1)).getString("Id");
             }
+
+            PercentString = Percent.toString() + "%";
             if (Mark.equals("0")) {
                 Mark = "N/A";
             }
