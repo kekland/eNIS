@@ -1,6 +1,7 @@
 package com.kekland.enis;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  * Created by Gulnar on 01.10.2017.
  */
 
-public class IMKOGradesListAdapter extends BaseAdapter {
+public class IMKOGradesListAdapter extends RecyclerView.Adapter<IMKOGradesListAdapter.IMKOViewHolder> {
     private Context mContext;
     private LayoutInflater mInflater;
     private ArrayList<IMKOLesson> mDataSource;
@@ -28,7 +29,7 @@ public class IMKOGradesListAdapter extends BaseAdapter {
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public class ViewHolder {
+    public static class IMKOViewHolder extends RecyclerView.ViewHolder {
         TextView SubjectName;
         TextView FormativeText;
         TextView SummativeText;
@@ -40,26 +41,22 @@ public class IMKOGradesListAdapter extends BaseAdapter {
         TextView DateOfChangeLabel;
         TextView DateOfChangeText;
 
-        public ViewHolder(TextView subjectName, TextView formativeText, TextView summativeText, ProgressBar formativeProgress,
-                          ProgressBar summativeProgress, TextView gradeText, TextView dateOfChangeLabel, TextView dateOfChangeText) {
-            SubjectName = subjectName;
-            FormativeText = formativeText;
-            SummativeText = summativeText;
-            FormativeProgress = formativeProgress;
-            SummativeProgress = summativeProgress;
-            GradeText = gradeText;
-            DateOfChangeLabel = dateOfChangeLabel;
-            DateOfChangeText = dateOfChangeText;
+        public IMKOViewHolder(View rowView) {
+            super(rowView);
+
+            SubjectName = (TextView)rowView.findViewById(R.id.layoutImkoSubjectName);
+            FormativeText = (TextView)rowView.findViewById(R.id.layoutImkoSubjectFormative);
+            SummativeText = (TextView)rowView.findViewById(R.id.layoutImkoSubjectSummative);
+            FormativeProgress = (ProgressBar)rowView.findViewById(R.id.layoutImkoSubjectFormativeProgress);
+            SummativeProgress = (ProgressBar)rowView.findViewById(R.id.layoutImkoSubjectSummativeProgress);
+            GradeText = (TextView)rowView.findViewById(R.id.layoutImkoSubjectGrade);
+            DateOfChangeLabel = (TextView)rowView.findViewById(R.id.layoutImkoSubjectDateOfChangeLabel);
+            DateOfChangeText = (TextView)rowView.findViewById(R.id.layoutImkoSubjectDateOfChange);
         }
     }
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return mDataSource.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return mDataSource.get(position);
     }
 
     @Override
@@ -67,29 +64,16 @@ public class IMKOGradesListAdapter extends BaseAdapter {
         return position;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        // Get view for row item
-        View rowView = convertView;
-        if(convertView == null) {
-            rowView = mInflater.inflate(R.layout.layout_imko_subject, parent, false);
+    @Override public IMKOViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View rowView = mInflater.inflate(R.layout.layout_imko_subject, parent, false);
+        return new IMKOViewHolder(rowView);
+    }
 
-            ViewHolder holder = new ViewHolder(
-                    (TextView)rowView.findViewById(R.id.layoutImkoSubjectName),
-                    (TextView)rowView.findViewById(R.id.layoutImkoSubjectFormative),
-                    (TextView)rowView.findViewById(R.id.layoutImkoSubjectSummative),
-                    (ProgressBar)rowView.findViewById(R.id.layoutImkoSubjectFormativeProgress),
-                    (ProgressBar)rowView.findViewById(R.id.layoutImkoSubjectSummativeProgress),
-                    (TextView)rowView.findViewById(R.id.layoutImkoSubjectGrade),
-                    (TextView)rowView.findViewById(R.id.layoutImkoSubjectDateOfChangeLabel),
-                    (TextView)rowView.findViewById(R.id.layoutImkoSubjectDateOfChange)
-            );
 
-            rowView.setTag(holder);
-        }
+    @Override public void onBindViewHolder(IMKOViewHolder holder, int position) {
 
         IMKOLesson les = mDataSource.get(position);
-        ViewHolder holder = (ViewHolder)rowView.getTag();
+
 
         holder.SubjectName.setText(les.Name);
         holder.FormativeText.setText(les.GetFormativeString());
@@ -122,6 +106,5 @@ public class IMKOGradesListAdapter extends BaseAdapter {
         holder.FormativeProgress.setProgress(formativeProgress);
         holder.SummativeProgress.setProgress(summativeProgress);
 
-        return rowView;
     }
 }

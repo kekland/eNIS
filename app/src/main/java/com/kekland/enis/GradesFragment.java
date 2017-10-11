@@ -26,6 +26,8 @@ public class GradesFragment extends Fragment {
     GradesPagerAdapter adapter;
     MasterListener listener;
 
+    FloatingActionButton update;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sc) {
         View view = inflater.inflate(R.layout.fragment_grades, container, false);
@@ -54,35 +56,59 @@ public class GradesFragment extends Fragment {
             }
         });
 
-        final FloatingActionButton update = view.findViewById(R.id.fragmentGradesUpdateFAB);
-
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(NISData.getDiary() == NISDiary.IMKO) {
-                    NISApi.GetJKOSubjects(new NISApiSubjects.JKOSubjectsListener() {
-                        @Override
-                        public void onStart() {
-                            update.hide();
-                        }
-
-                        @Override
-                        public void onSuccess(SubjectData data) {
-                            adapter.UpdateJKO(data);
-                            update.show();
-                        }
-
-                        @Override
-                        public void onFailure(String message) {
-                            listener.ShowSnackbar(message);
-                            update.show();
-                        }
-                    });
-                }
+                Update();
             }
         });
 
         return view;
+    }
+
+    void Update() {
+        //TODO : Fix here
+        boolean getIMKO = NISData.getDiary() == NISDiary.JKO;
+        if(getIMKO) {
+            NISApi.GetIMKOSubjects(new NISApiSubjects.IMKOSubjectsListener() {
+                @Override
+                public void onStart() {
+                    update.hide();
+                }
+
+                @Override
+                public void onSuccess(SubjectData data) {
+                    adapter.UpdateIMKO(data);
+                    update.show();
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    listener.ShowSnackbar(message);
+                    update.show();
+                }
+            });
+        }
+        else {
+            NISApi.GetJKOSubjects(new NISApiSubjects.JKOSubjectsListener() {
+                @Override
+                public void onStart() {
+                    update.hide();
+                }
+
+                @Override
+                public void onSuccess(SubjectData data) {
+                    adapter.UpdateJKO(data);
+                    update.show();
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    listener.ShowSnackbar(message);
+                    update.show();
+                }
+            });
+        }
     }
 
 }

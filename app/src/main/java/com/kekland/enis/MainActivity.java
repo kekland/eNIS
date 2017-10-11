@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 String title = item.getTitle().toString();
 
+                FloatingActionButton fab = findViewById(R.id.gradesUpdateFAB);
                 if(id == selectedID) {
                     return;
                 }
@@ -86,6 +88,14 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView)findViewById(R.id.nameSelectedTab)).setText(title);
 
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+                if(selectedID == R.id.menuMarks) {
+                    fab.show();
+                }
+                else {
+                    fab.hide();
+                }
+
                 if(selectedID == R.id.menuMarks) {
                     GradesFragment fragment = new GradesFragment();
                     fragment.listener = new MasterListener() {
@@ -95,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                                     Snackbar.LENGTH_SHORT).show();
                         }
                     };
+                    fragment.update = fab;
                     transaction.replace(R.id.content, fragment);
                 }
                 else if(selectedID == R.id.menuSettings) {
